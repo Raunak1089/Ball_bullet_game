@@ -48,7 +48,7 @@ var bullet = document.getElementById("bullet");
 
 };
 
-     setTimeout(function(){alrt("Time over!\nScore: " + document.getElementById("score2").value); location.href = location.href}, 60000);
+     setTimeout(function(){alert("Time over!\nScore: " + document.getElementById("score2").value); location.href = location.href}, 60000);
 
 
 
