@@ -1,8 +1,6 @@
 
 function f() {
 	var a1 = document.createElement("div"); a1.setAttribute("id", "bullet");
-    var b = document.createTextNode(".");
-  a1.appendChild(b);
   document.getElementById("demo").appendChild(a1);
   setTimeout(function(){document.getElementById("bullet").remove(); }, 500);
 
@@ -49,6 +47,5 @@ var bullet = document.getElementById("bullet");
 };
 
      setTimeout(function(){alert("Time over!\nScore: " + document.getElementById("score2").value); location.href = location.href}, 60000);
-
 
 
