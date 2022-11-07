@@ -1,4 +1,22 @@
 
+if (window.innerHeight>window.innerWidth){
+  styles = `
+  background: url('https://raunak1089.github.io/Required-files/rotatedevice.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 50%;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  font-size: 3em;
+`;
+
+  document.body.setAttribute('style', styles);
+  document.body.innerHTML='<div style="margin-top: 80vh;">PLEASE ROTATE YOUR DEVICE</div>';
+}
+
+window.onresize=()=>{location.href=location.href}
+
 function play_audio(link){
   var put = document.createElement('audio');
   put.src = 'https://raunak1089.github.io/Required-files/' + link; 
@@ -15,16 +33,17 @@ function fire_with_key(event){
     }
 }
 
-document.querySelector('#score4').innerText=localStorage.highestScore;
+if(localStorage.highestScore!=undefined){document.querySelector('#score4').innerText=localStorage.highestScore;}
 
-let counted = false;
-let bullet = document.createElement("div");
+let counted = false; let started = false;
 var ball = document.querySelector('#ball');
 var score2 = document.getElementById("score2");
-document.getElementById("demo").addEventListener('click', fire);
+
+document.getElementById("gun").addEventListener('click', fire);
 window.addEventListener('keydown',fire_with_key)
 
 function fire() {
+  started = true;
   play_audio('GunShot.mp3'); 
 
   // CREATE BULLET
@@ -41,12 +60,12 @@ function fire() {
 
 
 
-      document.getElementById("demo").removeEventListener('click', fire);
+      document.getElementById("gun").removeEventListener('click', fire);
       window.removeEventListener('keydown',fire_with_key)
 
       document.getElementById("dialogue").innerText = "Loading...";
     setTimeout(()=>{
-      document.getElementById("demo").addEventListener('click', fire);
+      document.getElementById("gun").addEventListener('click', fire);
       window.addEventListener('keydown',fire_with_key)
 
       document.getElementById("dialogue").innerText = "Shoot!";
@@ -57,9 +76,19 @@ function fire() {
       counted = false;
     }, 500);
 
+
+    // console.log(gun.getBoundingClientRect());
+
+
 };
 
+
+        // if(ball.getBoundingClientRect().y>270){play_audio('Balldrop.mp3');}
+        // if(ballTop=145){drop1.pause(); drop1.currentTime = 0;}
+
+
   setInterval(function() {
+if (started){
 ball.getAnimations()[0].playbackRate = 0.8+document.timeline.currentTime/100000;
 
     if (counted==false){
@@ -68,9 +97,6 @@ ball.getAnimations()[0].playbackRate = 0.8+document.timeline.currentTime/100000;
         bullet_coords = bullet.getBoundingClientRect();
         ly = bullet_coords.y; bx = ball_coords.x;
 
-
-        if(ball_coords.y>270){play_audio('Balldrop.mp3');}
-        // if(ballTop=145){drop1.pause(); drop1.currentTime = 0;}
 
         if(bullet_coords.x<=(bx+ball_coords.width) && bullet_coords.x>=(bx-bullet_coords.width) && ball_coords.y<=(ly+bullet_coords.height) && ball_coords.y>=(ly-ball_coords.height)){hit();}
           
@@ -92,14 +118,15 @@ ball.getAnimations()[0].playbackRate = 0.8+document.timeline.currentTime/100000;
         }
 
     }
+}
   }, 10);
-
+    setInterval(()=>{document.querySelector('#score6').innerText-=1},1000)
 
      setTimeout(()=>{
       score_now = Number(document.getElementById("score2").innerText);
       highest = Number(document.getElementById("score4").innerText);
       alert("Time over!\nScore: " + score_now);
-      if(highest!=NaN){localStorage.setItem('highestScore',Math.max(score_now,highest));}
+      if(highest.toString()!='NaN'){localStorage.setItem('highestScore',Math.max(score_now,highest));}
       else{localStorage.setItem('highestScore',score_now)}
       location.href = location.href;
     }, 60000);
