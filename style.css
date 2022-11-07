@@ -1,3 +1,9 @@
+body{
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
 #demo{
   text-align: center;
   display: flex;
@@ -6,7 +12,7 @@
   background-color: lightblue;
   color: black;
   width: 1000px;
-  height: 300px;
+  height: 450px;
   border-radius: 20px;
   user-select: none;
   flex-direction: column;
@@ -36,7 +42,7 @@
 }
 	         
 #bullet {
-  margin: 107px auto auto 10px;
+  margin: 180px auto auto 10px;
   background-color: red;
   width: 15px; height: 8px;
   border-radius: 10px;
@@ -48,8 +54,8 @@
   animation-fill-mode: forwards;
 }
 @keyframes bullet{
-	0%{margin: 107px auto auto 100px; }
-	100%{margin: 107px auto auto 1000px;}
+	0%{margin: 190px auto auto 100px; }
+	100%{margin: 190px auto auto 900px;}
 }
 	
 #ball {
@@ -71,8 +77,8 @@
   animation-play-state: paused;
 }
 @keyframes ball{
-	0%{margin: 0px 0px 0px 800px; }
-	100%{margin: 280px 0px 0px 800px;}
+	0%{margin: 100px 0px 0px 800px; }
+	100%{margin: 380px 0px 0px 800px;}
 }
 
 #score{
@@ -82,10 +88,6 @@
   border-bottom: 0.5px solid black;
   box-shadow: 2px 2px 2px black;
   Letter-spacing: 3px;
-}
-#score:hover{
-  filter: brightness(80%);
-  box-shadow: none;
 }
 
 #score1,#score2{
@@ -103,4 +105,23 @@
 }
 #dialogue.ballinzone{
   background: red;
+}
+
+#ground{
+  position: absolute; 
+  margin: 100px 800px; 
+  border-bottom: 5px solid; 
+  width: 100px; height: 280px; 
+  transform: translate(-45%,0%);
+}
+
+#reset{
+  width: fit-content; 
+  border-radius: 15px; 
+  background: white; 
+  padding: 2px 10px; 
+  border: 1px solid;
+}
+#reset:hover{
+  filter: brightness(80%);
 }
