@@ -19,8 +19,23 @@
           <span id="score2">0</span>
           <span style="color: transparent;">------</span>
           <span id="score5">Time left: </span>
-          <span id="score6">60</span>s
+          <span id="timeleft">60</span>s
         </div>
+
+        <span 
+        id="reset" 
+        onclick="
+          document.querySelector('#score4').innerText='--'; 
+          localStorage.removeItem('highestScore');
+          window.removeEventListener('resize', refresh);
+          document.documentElement.requestFullscreen().then(() => {
+            window.addEventListener('resize', refresh);
+          });
+      
+          this.remove();
+          startGame();
+        " 
+        style="margin-left: 50%; transform: scale(3);">START</span>        
         <div id="gun">
 
 
