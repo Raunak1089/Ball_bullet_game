@@ -8,11 +8,10 @@ body{
   text-align: center;
   display: flex;
   font-size: 20px;
-  margin: 10px;
   background-color: lightblue;
   color: black;
   width: 1000px;
-  height: 450px;
+  height: 377px;
   border-radius: 20px;
   user-select: none;
   flex-direction: column;
@@ -54,12 +53,12 @@ body{
   animation-fill-mode: forwards;
 }
 @keyframes bullet{
-	0%{margin: 190px auto auto 100px; }
-	100%{margin: 190px auto auto 900px;}
+	0%{margin-left: 100px; }
+	100%{margin-left: 900px;}
 }
 	
 #ball {
-  margin: -120px 0px 0px 800px; 
+  margin: -120px 0px 0px 672px; 
   background: radial-gradient(#9794e3,blue);
   width: 15px; height: 15px;
   border-radius: 50%;
@@ -67,9 +66,13 @@ body{
   border: 1px solid blue;
   box-shadow: 10px 5px 10px #444;
   transition: 0.5s;
+}
+
+#ball.dropanim{
   animation: ball 0.5s cubic-bezier(0.5, 0.05, 1, 0.5) infinite;
   animation-direction: alternate; 
 }
+
 #ball.hit{
   background: red;
   border: none;
@@ -77,8 +80,8 @@ body{
   animation-play-state: paused;
 }
 @keyframes ball{
-	0%{margin: 100px 0px 0px 800px; }
-	100%{margin: 380px 0px 0px 800px;}
+	0%{margin-top: 70px; }
+	100%{margin-top: 282px;}
 }
 
 #score{
@@ -109,7 +112,7 @@ body{
 
 #ground{
   position: absolute; 
-  margin: 100px 800px; 
+  margin: 18px 674px; 
   border-bottom: 5px solid; 
   width: 100px; height: 280px; 
   transform: translate(-45%,0%);
@@ -125,3 +128,4 @@ body{
 #reset:hover{
   filter: brightness(80%);
 }
+
