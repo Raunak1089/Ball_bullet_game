@@ -143,7 +143,7 @@ function startGame() {
       score_now = Number(document.getElementById("score2").innerText);
       highest = Number(document.getElementById("score4").innerText);
       alert("Time over!\nScore: " + score_now);
-      if(isNaN(highest)){localStorage.setItem('highestScore',Math.max(score_now,highest));}
+      if(!isNaN(highest)){localStorage.setItem('highestScore',Math.max(score_now,highest));}
       else{localStorage.setItem('highestScore',score_now)}
       location.href = location.href;
     }, 60000);
