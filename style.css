@@ -2,6 +2,21 @@ body{
   overflow: hidden;
   display: flex;
   justify-content: center;
+  position: fixed;
+}
+
+#startButton {
+  width: fit-content;
+  position: absolute;
+  top: 35%;
+  left: 53%;
+  font-size: 5em;
+  background: white; 
+  padding: 1.5em 4em; 
+  border: 1px solid;
+  overflow: hidden;
+  z-index: 20;
+  transform: translate(-50%, -50%);
 }
 
 #demo{
@@ -10,7 +25,7 @@ body{
   font-size: 20px;
   background-color: lightblue;
   color: black;
-  width: 1000px;
+  width: calc(100vw - 20px);
   height: 377px;
   border-radius: 20px;
   user-select: none;
@@ -128,4 +143,3 @@ body{
 #reset:hover{
   filter: brightness(80%);
 }
-
