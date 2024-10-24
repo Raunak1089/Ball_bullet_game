@@ -1,5 +1,7 @@
 <!DOCTYPE html>
  <html>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
  <head>
  	 <link rel="stylesheet" href="style.css" type="text/css"/>
 	 <title>Bullet Ball Game</title>
@@ -23,7 +25,7 @@
         </div>
 
         <span 
-        id="reset" 
+        id="startButton" 
         onclick="
           document.querySelector('#score4').innerText='--'; 
           localStorage.removeItem('highestScore');
@@ -34,8 +36,8 @@
       
           this.remove();
           startGame();
-        " 
-        style="margin-left: 50%; transform: scale(3);">START</span>        
+        "
+        >START</span>        
         <div id="gun">
 
 
