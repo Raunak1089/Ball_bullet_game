@@ -1,4 +1,3 @@
-
 if (window.innerHeight>window.innerWidth){
   styles = `
   background: url('https://raunak1089.github.io/Required-files/rotatedevice.png');
@@ -17,10 +16,7 @@ if (window.innerHeight>window.innerWidth){
 
 function refresh() {
     if (!document.fullscreenElement) {
-      console.log('Window resized, but not in fullscreen.');
       location.href=location.href;
-    } else {
-      console.log('Resize during fullscreen mode, skipping.');
     }
   }
 
@@ -103,49 +99,53 @@ function startGame() {
             // if(ballTop=145){drop1.pause(); drop1.currentTime = 0;}
 
 
-      setInterval(function() {
-    if (started){
-    ball.getAnimations()[0].playbackRate = 0.8+document.timeline.currentTime/100000;
+    setInterval(function() {
+      if (started){
+      ball.getAnimations()[0].playbackRate = 0.8+document.timeline.currentTime/100000;
 
-        if (counted==false){
+          if (counted==false){
 
-            ball_coords = ball.getBoundingClientRect();
-            bullet_coords = bullet.getBoundingClientRect();
-            ly = bullet_coords.y; bx = ball_coords.x;
+              ball_coords = ball.getBoundingClientRect();
+              bullet_coords = bullet.getBoundingClientRect();
+              ly = bullet_coords.y; bx = ball_coords.x;
 
 
-            if(bullet_coords.x<=(bx+ball_coords.width) && bullet_coords.x>=(bx-bullet_coords.width) && ball_coords.y<=(ly+bullet_coords.height) && ball_coords.y>=(ly-ball_coords.height)){hit();}
-              
-            if((bullet_coords.x<=(bx+ball_coords.width) && bullet_coords.x>=(bx-bullet_coords.width) && ball_coords.y<=(ly-ball_coords.height)) || (bullet_coords.x<=(bx+ball_coords.width) && bullet_coords.x>=(bx-bullet_coords.width) && ball_coords.y>=(ly+bullet_coords.height))){miss();};
+              if(bullet_coords.x<=(bx+ball_coords.width) && bullet_coords.x>=(bx-bullet_coords.width) && ball_coords.y<=(ly+bullet_coords.height) && ball_coords.y>=(ly-ball_coords.height)){hit();}
+                
+              if((bullet_coords.x<=(bx+ball_coords.width) && bullet_coords.x>=(bx-bullet_coords.width) && ball_coords.y<=(ly-ball_coords.height)) || (bullet_coords.x<=(bx+ball_coords.width) && bullet_coords.x>=(bx-bullet_coords.width) && ball_coords.y>=(ly+bullet_coords.height))){miss();};
 
-            function hit() {
-                play_audio('CymbalCrash.mp3');
-                ball.classList.add("hit");
-                setTimeout(()=>{
-                  ball.classList.remove("hit")
-                }, 1000);
-                score2.innerText -= -25;
-                counted = true;
-            }
+              function hit() {
+                  play_audio('CymbalCrash.mp3');
+                  ball.classList.add("hit");
+                  setTimeout(()=>{
+                    ball.classList.remove("hit")
+                  }, 1000);
+                  score2.innerText -= -25;
+                  counted = true;
+              }
 
-            function miss(){
-                score2.innerText -= 5;
-                counted = true;
-            }
+              function miss(){
+                  score2.innerText -= 5;
+                  counted = true;
+              }
 
-        }
-    }
-      }, 10);
-        setInterval(()=>{document.querySelector('#timeleft').innerText-=1},1000)
+          }
+      }
+    }, 10);
+    
+    setInterval(()=>{
+      let timeleft = document.querySelector('#timeleft').innerText;
+      if(timeleft == '0') gameOver();
+      else document.querySelector('#timeleft').innerText-=1
+    },1000)
 
 }
-     setTimeout(()=>{
+
+function gameOver() {
       score_now = Number(document.getElementById("score2").innerText);
       highest = Number(document.getElementById("score4").innerText);
       alert("Time over!\nScore: " + score_now);
       if(!isNaN(highest)){localStorage.setItem('highestScore',Math.max(score_now,highest));}
       else{localStorage.setItem('highestScore',score_now)}
       location.href = location.href;
-    }, 60000);
-
-
+}
