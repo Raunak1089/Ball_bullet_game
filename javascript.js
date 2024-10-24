@@ -133,11 +133,17 @@ function startGame() {
       }
     }, 10);
     
-    setInterval(()=>{
+    let checkTime = setInterval(()=>{
       let timeleft = document.querySelector('#timeleft').innerText;
-      if(timeleft == '0') gameOver();
-      else document.querySelector('#timeleft').innerText-=1
+      if(timeleft == '0') {
+        gameOver(); 
+        clearInterval(checkTime);
+      }
+      else {
+        document.querySelector('#timeleft').innerText-=1;
+      }
     },1000)
+
 
 }
 
