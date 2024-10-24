@@ -1,3 +1,4 @@
+
 if (window.innerHeight>window.innerWidth){
   styles = `
   background: url('https://raunak1089.github.io/Required-files/rotatedevice.png');
@@ -143,7 +144,6 @@ function startGame() {
         document.querySelector('#timeleft').innerText-=1;
       }
     },1000)
-
 
 }
 
