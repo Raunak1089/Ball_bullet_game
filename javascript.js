@@ -7,7 +7,7 @@ if (window.innerHeight>window.innerWidth){
   background-position: center;
   display: flex;
   justify-content: center;
-  font-size: 3em;
+  font-size: 1.5em;
 `;
 
   document.body.setAttribute('style', styles);
