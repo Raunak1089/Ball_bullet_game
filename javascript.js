@@ -1,3 +1,4 @@
+
 let music1 = new Audio(
       "https://raunak1089.github.io/Required-files/GunShot.mp3"
     );
@@ -41,44 +42,6 @@ function play_audio(link){
     }, 500);
 }
 
-function fire() {
-    started = true;
-    play_audio('GunShot.mp3'); 
-
-    // CREATE BULLET
-    bullet = document.createElement("div"); bullet.id='bullet';
-    bullet.style.marginTop = gun.getBoundingClientRect().y+'px';
-    document.getElementById("demo").appendChild(bullet);
-    setTimeout(()=>{bullet.remove(); }, 500);
-
-
-    gun.classList.add("gunanm");
-    setTimeout(()=>{
-    gun.classList.remove("gunanm");
-    },300);
-
-
-
-    document.getElementById("gun").removeEventListener('click', fire);
-    window.removeEventListener('keydown',fire_with_key)
-
-    document.getElementById("dialogue").innerText = "Loading...";
-    setTimeout(()=>{
-      document.getElementById("gun").addEventListener('click', fire);
-      window.addEventListener('keydown',fire_with_key)
-
-      document.getElementById("dialogue").innerText = "Shoot!";
-    }, 1000);
-
-    // MAKE COUNTED VARIABLE FALSE TO ENABLE SCORE COUNTING
-    setTimeout(()=>{
-      counted = false;
-    }, 500);
-
-
-    // console.log(gun.getBoundingClientRect());
-
-};
 
 
 function fire_with_key(event){
@@ -103,6 +66,44 @@ function startGame() {
     // START BALL DROPPING
     ball.classList.add("dropanim");
 
+    function fire() {
+        started = true;
+        play_audio('GunShot.mp3'); 
+
+        // CREATE BULLET
+        bullet = document.createElement("div"); bullet.id='bullet';
+        bullet.style.marginTop = gun.getBoundingClientRect().y+'px';
+        document.getElementById("demo").appendChild(bullet);
+        setTimeout(()=>{bullet.remove(); }, 500);
+
+
+        gun.classList.add("gunanm");
+        setTimeout(()=>{
+        gun.classList.remove("gunanm");
+        },300);
+
+
+
+        document.getElementById("gun").removeEventListener('click', fire);
+        window.removeEventListener('keydown',fire_with_key)
+
+        document.getElementById("dialogue").innerText = "Loading...";
+        setTimeout(()=>{
+          document.getElementById("gun").addEventListener('click', fire);
+          window.addEventListener('keydown',fire_with_key)
+
+          document.getElementById("dialogue").innerText = "Shoot!";
+        }, 1000);
+
+        // MAKE COUNTED VARIABLE FALSE TO ENABLE SCORE COUNTING
+        setTimeout(()=>{
+          counted = false;
+        }, 500);
+
+
+        // console.log(gun.getBoundingClientRect());
+
+    };
 
 
     // if(ball.getBoundingClientRect().y>270){play_audio('Balldrop.mp3');}
