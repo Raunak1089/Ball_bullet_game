@@ -29,7 +29,7 @@ body{
   background-color: lightblue;
   color: black;
   width: calc(100vw - 20px);
-  height: 377px;
+  height: calc(100vh - 15px);
   border-radius: 20px;
   user-select: none;
   flex-direction: column;
