@@ -34,6 +34,7 @@ function play_audio(link){
   }, 500);
 }
 
+let fire;
 function fire_with_key(event){
     if (event.key.toLowerCase() === 'd'){
         fire();
@@ -55,7 +56,7 @@ function startGame() {
     // START BALL DROPPING
     ball.classList.add("dropanim");
 
-    function fire() {
+    fire = () => {
       started = true;
       play_audio('GunShot.mp3'); 
 
