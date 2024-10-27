@@ -72,7 +72,7 @@ body{
 }
 @keyframes bullet{
 	0%{margin-left: 100px; }
-	100%{margin-left: 900px;}
+	100%{margin-left: calc(100vw - 50px);}
 }
 	
 #ball {
